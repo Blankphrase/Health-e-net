@@ -5,16 +5,16 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Description
 
 Platform where remote health workers can request assistance for cases on which they are working.
-Functionalities:    - Display a list of patients
-                    - Add a new patient (First Name, Last Name, Date of Birth, Telephone, Email Address)
-                    - Edit a patient from the list
-                    - Delete a patient from the list
+Functionalities:    1. Display a list of patients
+                    2. Add a new patient (First Name, Last Name, Date of Birth, Telephone, Email Address)
+                    3. Edit a patient from the list
+                    4. Delete a patient from the list
 
 #### Link to deployed site
 
 ![healthEnet](/src/assets/healthEnet.png?raw=true "healthEnet")
 
-http://healthEnet.herokuapp.com/
+http://health-e-net.herokuapp.com/
 
 ## Setup and installations
 
@@ -40,9 +40,9 @@ http://healthEnet.herokuapp.com/
 
 #### Installations
 
-Install NodeJS and NPM from  https://nodejs.org/en/download/.
-Install MongoDB Community Server from  https://www.mongodb.com/download-center.
-Run MongoDB, instructions are available on the install page for each OS at https://docs.mongodb.com/manual/administration/install-community/
+1. Install NodeJS and NPM from  https://nodejs.org/en/download/.
+2. Install MongoDB Community Server from  https://www.mongodb.com/download-center.
+3. Run MongoDB, instructions are available on the install page for each OS at https://docs.mongodb.com/manual/administration/install-community/
 
 #### Clone the Repo and checkout into the project folder.
 
