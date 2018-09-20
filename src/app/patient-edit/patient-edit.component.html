@@ -1,0 +1,42 @@
+<div class="button-row">
+  <a mat-raised-button color="primary" (click)="patientDetails()">
+    <mat-icon>show</mat-icon>
+  </a>
+</div>
+<form [formGroup]="patientForm" (ngSubmit)="onFormSubmit(patientForm.value)">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="First Name" formControlName="first_name" [errorStateMatcher]="matcher">
+    <mat-error>
+      <span *ngIf="!patientForm.get('first_name').valid && patientForm.get('first_name').touched">Please enter First Name</span>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Last Name" formControlName="last_name" [errorStateMatcher]="matcher">
+    <mat-error>
+      <span *ngIf="!patientForm.get('last_name').valid && patientForm.get('last_name').touched">Please enter Last Name</span>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Date of Birth" formControlName="date_of_birth" [errorStateMatcher]="matcher">
+    <mat-error>
+      <span *ngIf="!patientForm.get('date_of_birth').valid && patientForm.get('date_of_birth').touched">Please enter Date of Birth</span>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Telephone" formControlName="telephone" [errorStateMatcher]="matcher">
+    <mat-error>
+      <span *ngIf="!patientForm.get('telephone').valid && patientForm.get('telephone').touched">Please enter Telephone Number</span>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Email Address" formControlName="email_address" [errorStateMatcher]="matcher">
+    <mat-error>
+      <span *ngIf="!patientForm.get('email_address').valid && patientForm.get('email_address').touched">Please enter Email Address</span>
+    </mat-error>
+  </mat-form-field>
+  <div class="button-row">
+    <button type="submit" [disabled]="!patientForm.valid" mat-raised-button color="primary">
+      <mat-icon>save</mat-icon>
+    </button>
+  </div>
+</form>

@@ -1,0 +1,35 @@
+<div class="button-row">
+  <a mat-raised-button color="primary" [routerLink]="['/patients']">
+    <mat-icon>list</mat-icon>
+  </a>
+</div>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>
+      <h2>{{patient.first_name}}</h2>
+    </mat-card-title>
+    <mat-card-subtitle>{{patient.last_name}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <dl>
+      <dt>First Name:</dt>
+      <dd>{{patient.first_name}}</dd>
+      <dt>Last Name:</dt>
+      <dd>{{patient.last_name}}</dd>
+      <dt>Date of Birth:</dt>
+      <dd>{{patient.date_of_birth}}</dd>
+      <dt>Telephone:</dt>
+      <dd>{{patient.telephone}}</dd>
+      <dt>Email Address:</dt>
+      <dd>{{patient.email_address}}</dd>
+    </dl>
+  </mat-card-content>
+  <mat-card-actions>
+    <a mat-raised-button color="primary" [routerLink]="['/patient-edit', patient._id]">
+      <mat-icon>edit</mat-icon>
+    </a>
+    <a mat-raised-button color="warn" (click)="deletePatient(patient._id)">
+      <mat-icon>delete</mat-icon>
+    </a>
+  </mat-card-actions>
+</mat-card>
