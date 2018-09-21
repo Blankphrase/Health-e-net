@@ -6,30 +6,13 @@ var logger = require('morgan');
 
 var apiRouter = require('./routes/patients');
 
-
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/health-e-net', { promiseLibrary: require('bluebird') })
+  .then(() => console.log('connection successful'))
+  .catch((err) => console.error(err));
 
 var app = express();
-var uri = process.env.MONGOLAB_URI || 'mongodb://localhost/health-e-net';
-var mongoose = require('mongoose');
-mongoose.connect(uri, { promiseLibrary: require('bluebird') })
-.then(() => console.log('connection successful'))
-.catch((err) => console.error(err));
 
-app.use(session({
-  secret: 'secret_key',
-  cookie: { maxAge: 1209600000 },
-
-  // store: new MongoStore({
-  //   'db': 'meetupplanner'
-  // }),
-
-  store: new MongoStore({
-    url: process.env.MONGOLAB_URI
-  }),
-
-  resave: true,
-  saveUninitialized: true
-}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -38,12 +21,12 @@ app.use('/', express.static(path.join(__dirname, 'dist/health-e-net')));
 app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
