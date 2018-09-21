@@ -6,13 +6,30 @@ var logger = require('morgan');
 
 var apiRouter = require('./routes/patients');
 
+var uri = process.env.MONGOLAB_URI || 'mongodb://localhost/health-e-net';
+
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/health-e-net', { promiseLibrary: require('bluebird') })
+mongoose.connect(uri, { promiseLibrary: require('bluebird') })
     .then(() => console.log('connection successful'))
     .catch((err) => console.error(err));
 
 var app = express();
 
+app.use(session({
+  secret: 'secret_key',
+  cookie: { maxAge: 1209600000 },
+
+  // store: new MongoStore({
+  //   'db': 'meetupplanner'
+  // }),
+
+  store: new MongoStore({
+    url: process.env.MONGOLAB_URI
+  }),
+
+  resave: true,
+  saveUninitialized: true
+}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
