@@ -6,14 +6,14 @@ var logger = require('morgan');
 
 var apiRouter = require('./routes/patients');
 
-var uri = process.env.MONGOLAB_URI || 'mongodb://localhost/health-e-net';
 
-var mongoose = require('mongoose');
-mongoose.connect(uri, { promiseLibrary: require('bluebird') })
-    .then(() => console.log('connection successful'))
-    .catch((err) => console.error(err));
 
 var app = express();
+var uri = process.env.MONGOLAB_URI || 'mongodb://localhost/health-e-net';
+var mongoose = require('mongoose');
+mongoose.connect(uri, { promiseLibrary: require('bluebird') })
+.then(() => console.log('connection successful'))
+.catch((err) => console.error(err));
 
 app.use(session({
   secret: 'secret_key',
